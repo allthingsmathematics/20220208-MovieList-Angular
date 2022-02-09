@@ -1,0 +1,9 @@
+button {
+  padding: 5px 10px;
+  background-color: skyblue;
+  margin-right: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(270deg, blue, red);
+}
