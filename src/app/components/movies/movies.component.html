@@ -2,7 +2,29 @@
 
 <ul>
   <li *ngFor="let movie of movies; let i = index">
-    <button (click)="goToDescription(i)">{{ movie.name }}</button>
-    <p></p>
+    <button (click)="goToDescription(i)">{{ movie.name }}</button><br />
   </li>
 </ul>
+
+<h2>Add a New Movie Below</h2>
+Name: <input type="text" #newMovie /><br />
+Year: <input type="text" #newYear /><br />
+Description: <input type="text" #newDescription /><br />
+Image URL: <input type="text" #newImage /><br />
+
+<button
+  (click)="
+    addMovie(
+      newMovie.value,
+      newYear.value,
+      newDescription.value,
+      newImage.value
+    );
+    newMovie.value = '';
+    newYear.value = '';
+    newDescription.value = '';
+    newImage.value = ''
+  "
+>
+  Add
+</button>
