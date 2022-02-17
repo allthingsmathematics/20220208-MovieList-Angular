@@ -13,7 +13,7 @@ export class MoviesComponent implements OnInit {
 
   // @Output() descriptionInitialized = new EventEmitter();
 
-  constructor(service: ListService, private router: Router) {
+  constructor(private service: ListService, private router: Router) {
     this.movies = service.getList();
     console.log(this.movies);
   }
@@ -31,12 +31,8 @@ export class MoviesComponent implements OnInit {
     newDescription: string,
     newImage: string
   ) {
-    this.movies.push({
-      name: newName,
-      year: newYear,
-      description: newDescription,
-      url: newImage,
-    });
+    this.service.addMovie(newName, newYear, newDescription, newImage);
+    this.movies = this.service.getList();
     console.log(this.movies);
   }
 }
