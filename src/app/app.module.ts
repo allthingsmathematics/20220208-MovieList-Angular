@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviesComponent } from './components/movies/movies.component';
-import { HomeComponent } from './components/home/home.component';
+import { MoviesComponent } from './smart-components/movies/movies.component';
+import { HomeComponent } from './smart-components/home/home.component';
 import { ListService } from './services/list.service';
-import { DescriptionComponent } from './components/description/description.component';
+import { DescriptionComponent } from './smart-components/description/description.component';
+import { AddComponent } from './dumb-components/add/add.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DescriptionComponent } from './components/description/description.compo
     MoviesComponent,
     HomeComponent,
     DescriptionComponent,
+    AddComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [ListService],

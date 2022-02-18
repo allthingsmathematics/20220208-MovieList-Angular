@@ -14,8 +14,6 @@ export class DescriptionComponent implements OnInit {
   ratings: boolean[];
 
   constructor(service: ListService, private route: ActivatedRoute) {
-    //right now I am getting the movies array from the static List service. I need to figure
-    //out how to get the array from the movies component after it gets updated with new movies
     this.movies = service.getList();
 
     this.ratings = [false, false, false, false, false];

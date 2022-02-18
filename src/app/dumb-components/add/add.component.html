@@ -1,11 +1,3 @@
-<h2>Click any of the {{ movies.length }} movies below to see description</h2>
-
-<ul>
-  <li *ngFor="let movie of movies; let i = index">
-    <button (click)="goToDescription(i)">{{ movie.name }}</button><br />
-  </li>
-</ul>
-
 <h2>Add a New Movie Below</h2>
 Name: <input type="text" #newMovie /><br />
 Year: <input type="text" #newYear /><br />
