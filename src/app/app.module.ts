@@ -8,6 +8,7 @@ import { HomeComponent } from './smart-components/home/home.component';
 import { ListService } from './services/list.service';
 import { DescriptionComponent } from './smart-components/description/description.component';
 import { AddComponent } from './dumb-components/add/add.component';
+import { RatingComponent } from './dumb-components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AddComponent } from './dumb-components/add/add.component';
     HomeComponent,
     DescriptionComponent,
     AddComponent,
+    RatingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [ListService],

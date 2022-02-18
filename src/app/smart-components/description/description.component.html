@@ -3,13 +3,4 @@
 <img src="{{ movies[id].url }}" />
 <p>{{ movies[id].description }}</p>
 
-<h1>Click what you rate the movie below!!</h1>
-<h1>
-  <i
-    *ngFor="let rating of ratings; let i = index"
-    class="bi"
-    [class.bi-star-fill]="rating"
-    [class.bi-star]="!rating"
-    (click)="changeRating(i)"
-  ></i>
-</h1>
+<app-rating (outputRating)="addRating($event)"></app-rating>

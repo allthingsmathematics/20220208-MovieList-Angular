@@ -9,11 +9,9 @@ import { AddComponent } from 'src/app/dumb-components/add/add.component';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent {
   movies: any;
   toggleAdd: boolean;
-
-  // @Output() descriptionInitialized = new EventEmitter();
 
   constructor(private service: ListService, private router: Router) {
     this.movies = service.getList();
@@ -21,11 +19,8 @@ export class MoviesComponent implements OnInit {
     console.log(this.movies);
   }
 
-  ngOnInit(): void {}
-
   goToDescription(index: number) {
     this.router.navigate(['movies', index]);
-    // this.descriptionInitialized.emit(this.movies);
   }
 
   toggleAddMovie() {
@@ -38,14 +33,3 @@ export class MoviesComponent implements OnInit {
     console.log(this.movies);
   }
 }
-
-//   addMovie(
-//     newName: string,
-//     newYear: string,
-//     newDescription: string,
-//     newImage: string
-//   ) {
-//     this.service.addMovie(newName, newYear, newDescription, newImage);
-//     this.movies = this.service.getList();
-//     console.log(this.movies);
-//   }
