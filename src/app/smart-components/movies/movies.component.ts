@@ -16,7 +16,6 @@ export class MoviesComponent {
   constructor(private service: ListService, private router: Router) {
     this.movies = service.getList();
     this.toggleAdd = false;
-    console.log(this.movies);
   }
 
   goToDescription(index: number) {
@@ -39,6 +38,5 @@ export class MoviesComponent {
     //only add movie if its new
     this.service.addMovie(newName, newYear, newDescription, newImage);
     this.movies = this.service.getList();
-    console.log('ran');
   }
 }
