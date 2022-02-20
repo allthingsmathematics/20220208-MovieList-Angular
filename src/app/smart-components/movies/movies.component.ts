@@ -28,8 +28,17 @@ export class MoviesComponent {
   }
 
   inputNewMovie({ newName, newYear, newDescription, newImage }: any) {
+    //if movie exists, return and stop method
+    for (let i = 0; i < this.movies.length; i++) {
+      if (this.movies[i].name == newName) {
+        alert('This movie already exists!!!');
+        return;
+      }
+    }
+
+    //only add movie if its new
     this.service.addMovie(newName, newYear, newDescription, newImage);
     this.movies = this.service.getList();
-    console.log(this.movies);
+    console.log('ran');
   }
 }

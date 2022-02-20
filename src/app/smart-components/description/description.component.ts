@@ -9,18 +9,19 @@ import { RatingComponent } from 'src/app/dumb-components/rating/rating.component
   styleUrls: ['./description.component.css'],
 })
 export class DescriptionComponent {
+  rating: number;
   movies: any;
   index: any;
   id: number;
 
   constructor(service: ListService, private route: ActivatedRoute) {
     this.movies = service.getList();
-
     this.index = this.route.snapshot.paramMap.get('id');
     this.id = parseInt(this.index);
+    this.rating = this.movies[this.id].rating;
   }
 
   addRating(rating: any) {
-    console.log(rating);
+    this.movies[this.id].rating = rating;
   }
 }

@@ -3,4 +3,4 @@
 <img src="{{ movies[id].url }}" />
 <p>{{ movies[id].description }}</p>
 
-<app-rating (outputRating)="addRating($event)"></app-rating>
+<app-rating (outputRating)="addRating($event)" [rating]="rating"></app-rating>

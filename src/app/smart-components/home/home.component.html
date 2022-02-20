@@ -1,2 +1,10 @@
 <h1>Movies Task</h1>
 <button (click)="goToMovies()">Get List of Movies</button>
+<br /><br /><br />
+<h2>Click Button Below for Your Highest Rated Movie</h2>
+
+<button (click)="toggleOpen()">Get Highest Rated Movie</button>
+
+<div *ngIf="toggleHighestRatingView">
+  <h1>{{ highestRatedHeading }}</h1>
+</div>
