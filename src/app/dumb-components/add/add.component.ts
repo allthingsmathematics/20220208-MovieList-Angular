@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { checkMovieExists } from './check-movie-exists';
 
 @Component({
   selector: 'app-add',
@@ -7,8 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class AddComponent {
   @Output() newMovie = new EventEmitter();
-
-  constructor() {}
+  @Input() moviesArray: any[];
+  movieName: string;
+  movieExists: boolean = false;
 
   addMovie(
     newName: string,
@@ -16,7 +18,10 @@ export class AddComponent {
     newDescription: string,
     newImage: string
   ) {
-    // console.log(newImage);
     this.newMovie.emit({ newName, newYear, newDescription, newImage });
+  }
+
+  onKeyUp() {
+    this.movieExists = checkMovieExists(this.movieName, this.moviesArray);
   }
 }

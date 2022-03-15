@@ -1,37 +1,29 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  Input,
+  OnChanges,
+} from '@angular/core';
+import { ratingToArray } from './rating-to-array';
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css'],
 })
-export class RatingComponent implements OnInit {
+export class RatingComponent implements OnChanges {
   @Input() rating: number;
   ratings: boolean[];
   @Output() outputRating = new EventEmitter();
 
-  constructor() {
-    this.ratings = [false, false, false, false, false];
-  }
-
-  ngOnInit(): void {
-    this.changeRating(this.rating - 1);
+  ngOnChanges(): void {
+    this.ratings = ratingToArray(this.rating);
   }
 
   changeRating(rating: number) {
-    for (let i = 0; i < this.ratings.length; i++) {
-      //if there is a current rating, set the rating back to 0, break loop
-      if (this.ratings[i]) {
-        this.ratings = [false, false, false, false, false];
-        this.rating = 0;
-        break;
-
-        //if no current rating, update rating
-      } else if (i <= rating) {
-        this.ratings[i] = !this.ratings[i];
-        this.rating = rating + 1;
-      }
-    }
-    this.outputRating.emit(this.rating);
+    this.ratings = ratingToArray(rating);
+    this.outputRating.emit(rating);
   }
 }

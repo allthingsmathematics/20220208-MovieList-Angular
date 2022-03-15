@@ -1,10 +1,19 @@
 <h2>Add a New Movie Below</h2>
-Name: <input type="text" #newMovie /><br />
-Year: <input type="text" #newYear /><br />
-Description: <input type="text" #newDescription /><br />
-Image URL: <input type="text" #newImage /><br />
+Name:
+<input
+  [(ngModel)]="movieName"
+  type="text"
+  #newMovie
+  (keyup)="onKeyUp()"
+/><br />
+<h1 *ngIf="movieExists">The Movie Already Exists!!!</h1>
+Year: <input [disabled]="movieExists" type="text" #newYear /><br />
+Description:
+<input [disabled]="movieExists" type="text" #newDescription /><br />
+Image URL: <input [disabled]="movieExists" type="text" #newImage /><br />
 
 <button
+  [disabled]="movieExists"
   (click)="
     addMovie(
       newMovie.value,

@@ -5,6 +5,6 @@
     class="bi"
     [class.bi-star-fill]="rating"
     [class.bi-star]="!rating"
-    (click)="changeRating(i)"
+    (click)="ratings[0] ? changeRating(0) : changeRating(i + 1)"
   ></i>
 </h1>

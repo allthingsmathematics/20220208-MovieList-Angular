@@ -11,31 +11,18 @@ import { AddComponent } from 'src/app/dumb-components/add/add.component';
 })
 export class MoviesComponent {
   movies: any;
-  toggleAdd: boolean;
 
   constructor(private service: ListService, private router: Router) {
     this.movies = service.getList();
-    this.toggleAdd = false;
   }
 
   goToDescription(index: number) {
     this.router.navigate(['movies', index]);
   }
 
-  toggleAddMovie() {
-    this.toggleAdd = !this.toggleAdd;
-  }
-
   inputNewMovie({ newName, newYear, newDescription, newImage }: any) {
     //if movie exists, return and stop method
-    for (let i = 0; i < this.movies.length; i++) {
-      if (this.movies[i].name == newName) {
-        alert('This movie already exists!!!');
-        return;
-      }
-    }
 
-    //only add movie if its new
     this.service.addMovie(newName, newYear, newDescription, newImage);
     this.movies = this.service.getList();
   }

@@ -9,6 +9,8 @@ import { ListService } from './services/list.service';
 import { DescriptionComponent } from './smart-components/description/description.component';
 import { AddComponent } from './dumb-components/add/add.component';
 import { RatingComponent } from './dumb-components/rating/rating.component';
+import { FormsModule } from '@angular/forms';
+import { HighestRatingComponent } from './dumb-components/highest-rating/highest-rating.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,9 @@ import { RatingComponent } from './dumb-components/rating/rating.component';
     DescriptionComponent,
     AddComponent,
     RatingComponent,
+    HighestRatingComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [ListService],
   bootstrap: [AppComponent],
 })

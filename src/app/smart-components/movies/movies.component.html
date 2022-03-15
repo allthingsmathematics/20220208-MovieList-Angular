@@ -5,10 +5,8 @@
     <button (click)="goToDescription(i)">{{ movie.name }}</button><br />
   </li>
 </ul>
-<br /><br />
 
-<button (click)="toggleAddMovie()" style="background-color: red">
-  Click here to add Movie
-</button>
-
-<app-add (newMovie)="inputNewMovie($event)" *ngIf="toggleAdd"></app-add>
+<app-add
+  (newMovie)="inputNewMovie($event)"
+  [moviesArray]="this.movies"
+></app-add>
