@@ -6,7 +6,9 @@ Name:
   #newMovie
   (keyup)="onKeyUp()"
 /><br />
-<h1 *ngIf="movieExists">The Movie Already Exists!!!</h1>
+<div class="alert alert-danger" *ngIf="movieExists">
+  The Movie Already Exists!!!
+</div>
 Year: <input [disabled]="movieExists" type="text" #newYear /><br />
 Description:
 <input [disabled]="movieExists" type="text" #newDescription /><br />
