@@ -11,6 +11,7 @@ import { AddComponent } from './dumb-components/add/add.component';
 import { RatingComponent } from './dumb-components/rating/rating.component';
 import { FormsModule } from '@angular/forms';
 import { HighestRatingComponent } from './dumb-components/highest-rating/highest-rating.component';
+import { ResolveGuard } from './guards/resolve.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { HighestRatingComponent } from './dumb-components/highest-rating/highest
     HighestRatingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [ListService],
+  providers: [ListService, ResolveGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

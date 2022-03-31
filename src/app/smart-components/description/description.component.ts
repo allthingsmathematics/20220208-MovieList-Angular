@@ -19,6 +19,9 @@ export class DescriptionComponent {
     this.index = this.route.snapshot.paramMap.get('id');
     this.id = parseInt(this.index);
     this.rating = this.movies[this.id].rating;
+
+    //accessing data from resolver guard
+    console.log(this.route.snapshot.data['movieList']);
   }
 
   addRating(rating: any) {
