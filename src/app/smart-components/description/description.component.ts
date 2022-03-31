@@ -14,7 +14,7 @@ export class DescriptionComponent {
   index: any;
   id: number;
 
-  constructor(service: ListService, private route: ActivatedRoute) {
+  constructor(private service: ListService, private route: ActivatedRoute) {
     this.movies = service.getList();
     this.index = this.route.snapshot.paramMap.get('id');
     this.id = parseInt(this.index);
@@ -22,6 +22,8 @@ export class DescriptionComponent {
   }
 
   addRating(rating: any) {
-    this.movies[this.id].rating = rating;
+    //this is mutating the object, we want to create a new instance of an object and insert into list
+    // this.movies[this.id].rating = rating;
+    this.service.updateRating(this.movies[this.id].name, rating);
   }
 }

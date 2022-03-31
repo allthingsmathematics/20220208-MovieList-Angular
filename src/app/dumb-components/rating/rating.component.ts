@@ -23,7 +23,7 @@ export class RatingComponent implements OnChanges {
   }
 
   changeRating(rating: number) {
-    this.ratings = ratingToArray(rating);
+    // this.ratings = ratingToArray(rating);
     this.outputRating.emit(rating);
   }
 }

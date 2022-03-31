@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,20 @@ export class ListService {
     },
   ];
 
+  private list$ = new BehaviorSubject<any[]>(this.list);
+
   getList() {
     return [...this.list];
+  }
+
+  getListStream() {
+    return this.list$.asObservable();
+  }
+
+  updateRating(movieName: string, rating: number) {
+    this.list = this.list.map((movie) => {
+      return movie.name === movieName ? { ...movie, rating } : movie;
+    });
   }
 
   addMovie(
@@ -41,13 +54,16 @@ export class ListService {
     newDescription: string,
     newImage: string
   ) {
-    this.list.push({
-      name: newName,
-      year: newYear,
-      description: newDescription,
-      url: newImage,
-      rating: 0,
-    });
+    this.list$.next([
+      ...this.list$.getValue(),
+      {
+        name: newName,
+        year: newYear,
+        description: newDescription,
+        url: newImage,
+        rating: 0,
+      },
+    ]);
     // console.log(this.list);
   }
 }

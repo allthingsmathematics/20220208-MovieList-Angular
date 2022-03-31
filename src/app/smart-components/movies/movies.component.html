@@ -1,7 +1,7 @@
 <h2>Click any of the {{ movies.length }} movies below to see description</h2>
 
-<ul>
-  <li *ngFor="let movie of movies; let i = index">
+<ul *ngIf="movies$ | async as m">
+  <li *ngFor="let movie of m; let i = index">
     <button (click)="goToDescription(i)">{{ movie.name }}</button><br />
   </li>
 </ul>

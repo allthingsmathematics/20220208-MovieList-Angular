@@ -3,6 +3,7 @@ import { ListService } from 'src/app/services/list.service';
 import { Router } from '@angular/router';
 import { DescriptionComponent } from '../description/description.component';
 import { AddComponent } from 'src/app/dumb-components/add/add.component';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -11,9 +12,16 @@ import { AddComponent } from 'src/app/dumb-components/add/add.component';
 })
 export class MoviesComponent {
   movies: any;
+  movies$: Observable<any[]>;
 
   constructor(private service: ListService, private router: Router) {
-    this.movies = service.getList();
+    // this.movies = service.getList();
+
+    this.movies$ = this.service.getListStream().pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
   }
 
   goToDescription(index: number) {
@@ -24,6 +32,6 @@ export class MoviesComponent {
     //if movie exists, return and stop method
 
     this.service.addMovie(newName, newYear, newDescription, newImage);
-    this.movies = this.service.getList();
+    // this.movies = this.service.getList();
   }
 }
